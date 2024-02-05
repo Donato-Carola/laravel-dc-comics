@@ -1,3 +1,21 @@
 /*come se dicessi /node_modules/bootstrap */
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+header{
+    @import "./partials/headers";
+}
+
+
+
+
+
+
+
+
+
+
+footer{
+    @import "./partials/footer";
+}
+
