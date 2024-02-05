@@ -4,42 +4,49 @@
         <span>ADDITIONAL DC SITES</span>
     </div>
 
-   <div class="pt-3 pb-3">
-       <nav class="d-flex  align-items-center container">
+    <div class="pt-3 pb-3">
+        <nav class="d-flex  align-items-center container">
 
-        <ul class="d-flex justify-content-between w-100 text-uppercase">
-            <li>
-                home
-            </li>
-            <li>
-                comics
-            </li>
-            <li>
-                movies
-            </li>
-            <li>
-                tv
-            </li>
-            <li>
-                games
-            </li>
-            <li>
-                collectibles
-            </li>
-            <li>
-                video
-            </li>
-            <li>
-               fans
-            </li>
-            <li>
-               news
-            </li>
-            <li>
-                shop
-            </li>
-        </ul>
+            <ul class="d-flex justify-content-between w-100 text-uppercase">
+                <li>
+                    <a href="{{ route('pages.home') }}">
+                        home
+                    </a>
 
-    </nav>
-</div>
+                </li>
+                <li>
+                    <a href="{{ route('comics.index') }}">
+                        comics
+
+                    </a>
+
+                </li>
+                <li>
+                    movies
+                </li>
+                <li>
+                    tv
+                </li>
+                <li>
+                    games
+                </li>
+                <li>
+                    collectibles
+                </li>
+                <li>
+                    video
+                </li>
+                <li>
+                    fans
+                </li>
+                <li>
+                    news
+                </li>
+                <li>
+                    shop
+                </li>
+            </ul>
+
+        </nav>
+    </div>
 </header>
