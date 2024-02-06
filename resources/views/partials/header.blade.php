@@ -22,6 +22,12 @@
 
                 </li>
                 <li>
+                    <a href="{{ route('Guest.comics.create') }}">
+                        Crea Fumetto
+                    </a>
+
+                </li>
+                <li>
                     movies
                 </li>
                 <li>
@@ -39,9 +45,7 @@
                 <li>
                     fans
                 </li>
-                <li>
-                    news
-                </li>
+
                 <li>
                     shop
                 </li>
