@@ -11,12 +11,12 @@
 
         <div class="col-6">
             <div class="card mt-5 ">
-            <img class="w-100" src="{{$comic['thumb']}}" alt="">
+            <img class="w-100" src="{{$comic->thumb}}" alt="">
             <div class="card-body">
                 <p>
-                  {{$comic['title']}}
+                  {{$comic->title}}
                 </p>
-                <p>{{$comic['description']}}</p>
+                <p>{{$comic->description}}</p>
 
             </div>
          </div>
