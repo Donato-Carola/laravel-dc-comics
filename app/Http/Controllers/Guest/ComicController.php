@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ComicController extends Controller
 {
@@ -49,12 +50,12 @@ class ComicController extends Controller
                 'description' => ['required', 'min:4', 'max:1000'],
                 'thumb' => ['required', 'min:1', 'url:http,https'],
                 'price' => ['required'],
-                'series' => ['required', 'min:1', 'max:10'],
+                'series' => ['required', 'min:1', 'max:30'],
                 'sale_date' => ['required'],
                 'type' => ['required', 'min:1', 'max:10'],
             ],
             [
-                'title.required' => 'inserisci titolo' // uqesto ci da la possibilità di inserire un testo di errore personale 
+                'title.required' => 'inserisci titolo' // uqesto ci da la possibilità di inserire un testo di errore personale
             ]
         );
 
@@ -89,6 +90,21 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+        $request->validate(
+            [
+                'title' => ['required', 'unique:comics', 'min:4', 'max:40', Rule::unique('comics')->ignore($comic->id)],
+                'description' => ['required', 'min:4', 'max:1000'],
+                'thumb' => ['required', 'min:1', 'url:http,https'],
+                'price' => ['required'],
+                'series' => ['required', 'min:1', 'max:30'],
+                'sale_date' => ['required'],
+                'type' => ['required', 'min:1', 'max:10'],
+            ],
+            [
+                'title.required' => 'inserisci titolo' // uqesto ci da la possibilità di inserire un testo di errore personale
+            ]
+        );
+
         $data = $request->all();
 
         // $comic = Comic::findOrFail($id);
