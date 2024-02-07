@@ -34,7 +34,7 @@ class ComicController extends Controller
         $newComicData = $request->all();
 
         $newComic = new Comic();
-       /* $newComic->title = $newComicData['title'];
+        /* $newComic->title = $newComicData['title'];
         $newComic->description = $newComicData['description'];
         $newComic->thumb = $newComicData['thumb'];
         $newComic->price = $newComicData['price'];
@@ -43,11 +43,23 @@ class ComicController extends Controller
         $newComic->type = $newComicData['type'];*/
         //$newComic->save();
 
-        $request->validate([
-            'title'=>['required', 'unique:comics', 'min:4','max:40'],
-        ]);
+        $request->validate(
+            [
+                'title' => ['required', 'unique:comics', 'min:4', 'max:40'],
+                'description' => ['required', 'min:4', 'max:1000'],
+                'thumb' => ['required', 'min:1', 'url:http,https'],
+                'price' => ['required'],
+                'series' => ['required', 'min:1', 'max:10'],
+                'sale_date' => ['required'],
+                'type' => ['required', 'min:1', 'max:10'],
+            ],
+            [
+                'title.required' => 'inserisci titolo' // uqesto ci da la possibilità di inserire un testo di errore personale 
+            ]
+        );
 
-        $newComic=Comic::create($newComicData);
+
+        $newComic = Comic::create($newComicData);
 
 
         return redirect()->route('Guest.comics.show', $newComic->id);
@@ -79,12 +91,11 @@ class ComicController extends Controller
     {
         $data = $request->all();
 
-       // $comic = Comic::findOrFail($id);
+        // $comic = Comic::findOrFail($id);
 
 
         $comic->update($data);
         return redirect()->route('Guest.comics.show', $comic->id);
-
     }
 
     /**
