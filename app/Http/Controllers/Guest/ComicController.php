@@ -41,10 +41,15 @@ class ComicController extends Controller
         $newComic->series = $newComicData['series'];
         $newComic->sale_date = $newComicData['sale_date'];
         $newComic->type = $newComicData['type'];*/
+        //$newComic->save();
 
-        $newComic->fill($newComicData);
+        $request->validate([
+            'title'=>['required', 'unique:comics', 'min:4','max:40'],
+        ]);
 
-        $newComic->save();
+        $newComic=Comic::create($newComicData);
+
+
         return redirect()->route('Guest.comics.show', $newComic->id);
     }
 
@@ -70,9 +75,16 @@ class ComicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        $data = $request->all();
+
+       // $comic = Comic::findOrFail($id);
+
+
+        $comic->update($data);
+        return redirect()->route('Guest.comics.show', $comic->id);
+
     }
 
     /**
